@@ -57,7 +57,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-row">
-      <div className="w-1/6 h-screen bg-purple-900 p-4 flex flex-col justify-between">
+      <div className="w-1/6 h-screen bg-purple-900 p-4 flex flex-col justify-between fixed">
         <div className="flex justify-center items-center flex-col">
           <img
             src="https://avatars.githubusercontent.com/u/5620529?v=4"
@@ -73,6 +73,7 @@ export default function Dashboard() {
           Sair
         </button>
       </div>
+      <div className="w-1/6"></div>
       <div className="w-5/6 flex flex-col gap-4 p-4">
         <div className="bg-black-900 p-4 rounded-2xl">
           <span className="text-white text-lg font-black">Balance: </span>
@@ -144,10 +145,14 @@ export default function Dashboard() {
         <div>
           <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl flex justify-between items-center gap-4">
             <FormControl>
-              <Input type="text" backgroundColor={"white"} />
+              <Input
+                type="text"
+                backgroundColor={"white"}
+                placeholder={"Buscar"}
+              />
             </FormControl>
             <FormControl>
-              <Select placeholder="Select country" backgroundColor={"white"}>
+              <Select placeholder="Select type" backgroundColor={"white"}>
                 <option>cash-in</option>
                 <option>cash-out</option>
               </Select>
