@@ -1,12 +1,15 @@
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { api } from "./api/api";
+import { useToast } from '@chakra-ui/react'
 
 export default function Login() {
   const router = useRouter();
 
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const toast = useToast()
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,12 +19,21 @@ export default function Login() {
         password: password,
       });
       if (response.data.status === "Error") {
+
         console.log("Error");
       } else {
         console.log(response);
         router.push(`/dashboard`);
       }
     } catch (error) {
+      toast({
+        title: 'Erro nas credenciais.',
+        description: "Login ou senha inválidos.",
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: "bottom-right"
+      })
       console.log(error);
     }
   }
