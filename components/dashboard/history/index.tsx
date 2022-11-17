@@ -13,6 +13,9 @@ for (let index = 0; index < 16; index++) {
     transactionsReport.push({ balance: Math.floor(Math.random() * 100), createdAt: index + 1 })
 }
 
+const arrCategories = transactionsReport.map(t => t.createdAt);
+const arrData = transactionsReport.map(t => t.balance);
+
 function History() {
     const state = {
         options: {
@@ -20,7 +23,7 @@ function History() {
                 id: "basic-bar",
             },
             xaxis: {
-                categories: transactionsReport.map(t => t.createdAt),
+                categories: arrCategories,
             },
             fill: {
                 colors: ["#581C87", "#E91E63", "#9C27B0"],
@@ -29,7 +32,7 @@ function History() {
         series: [
             {
                 name: "saldo",
-                data: transactionsReport.map(t => t.balance),
+                data: arrData,
             },
         ],
     };
