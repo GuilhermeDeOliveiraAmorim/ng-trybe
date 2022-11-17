@@ -35,7 +35,7 @@ function SendMoney() {
             <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl">
                 <input
                     type="text"
-                    className="p-2 rounded-xl"
+                    className="p-2 rounded-xl w-full"
                     placeholder="Buscar usuário"
                     onChange={e => setSearch(e.target.value)}
                     value={search}
@@ -58,8 +58,7 @@ function SendMoney() {
                                     return (
                                         <User key={user.id} id={user.id} name={user.name} picture={user.picture} />
                                     )
-                                }
-                                )}
+                                })}
                             </Tbody>
                         )}
                     </Table>

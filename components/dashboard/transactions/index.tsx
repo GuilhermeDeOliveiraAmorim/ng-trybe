@@ -48,20 +48,21 @@ function Transactions() {
 
     return (
         <div>
-            <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl flex justify-between items-center gap-4">
-                <FormControl>
-                    <Select
-                        placeholder="Select type"
-                        backgroundColor={"white"}
-                        onChange={e => setTtransactionType(e.target.value)}
-                        value={transactionType}
-                    >
-                        <option>cash-in</option>
-                        <option>cash-out</option>
-                    </Select>
-                </FormControl>
-                <input className="p-2 h-10 rounded-md" type="date" />
-                <input className="p-2 h-10 rounded-md" type="date" />
+            <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl flex flex-col sm:flex-row lg:flex-row sm:justify-between lg:justify-between items-center gap-4">
+                <Select
+                    placeholder="Tipo de transação"
+                    backgroundColor={"white"}
+                    onChange={e => setTtransactionType(e.target.value)}
+                    value={transactionType}
+                    borderRadius={"0.75rem"}
+                >
+                    <option>cash-in</option>
+                    <option>cash-out</option>
+                </Select>
+                <div className="flex gap-2 justify-between w-full">
+                    <input className="p-2 h-10 w-1/2 rounded-xl" type="date" />
+                    <input className="p-2 h-10 w-1/2 rounded-xl" type="date" />
+                </div>
             </div>
             <div className="bg-black-900 pl-1 pr-1 pb-1">
                 <TableContainer className="bg-white">
