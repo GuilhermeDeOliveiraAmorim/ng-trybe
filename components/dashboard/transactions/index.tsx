@@ -1,104 +1,84 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Table,
-    Thead,
     Tbody,
     Tr,
-    Th,
     Td,
     TableContainer,
     FormControl,
-    Input,
     Select,
 } from "@chakra-ui/react";
-import { SingleDatepicker } from "chakra-dayzed-datepicker";
+import { Transaction } from "./transaction";
+
+interface IUser {
+    picture: string;
+    id: string;
+    name: string;
+}
+
+interface ITransaction {
+    id: string;
+    user: IUser;
+    type: string;
+    value: number;
+    createdAt: string;
+}
+
+const arrTransactions = [
+    { id: "w", user: { picture: "portrait-3353699__340.jpg", id: "a", name: "Heather J. Cummings" }, type: "cash-out", value: 50, createdAt: "14/11/2022" },
+    { id: "z", user: { picture: "people-875597__340.jpg", id: "b", name: "Robert B. Pursell" }, type: "cash-in", value: 65, createdAt: "13/11/2022" },
+    { id: "y", user: { picture: "smile-2072907__340.jpg", id: "c", name: "Joyce J. Jones" }, type: "cash-in", value: 10, createdAt: "11/11/2022" },
+    { id: "t", user: { picture: "portrait-3098319__340.jpg", id: "d", name: "Luanne M. Arnold" }, type: "cash-out", value: 18, createdAt: "11/11/2022" },
+    { id: "u", user: { picture: "portrait-3292287__340.jpg", id: "e", name: "Janet T. Kruger" }, type: "cash-out", value: 18, createdAt: "11/11/2022" },
+];
 
 function Transactions() {
-    const [date, setDate] = useState(new Date());
+    const [transactionDateStart, setTtransactionDateStart] = useState("");
+    const [transactionDateEnd, setTtransactionDateEnd] = useState("");
+
+
+    const [transactionType, setTtransactionType] = useState("");
+    const [transactions, setTransactions] = useState<ITransaction[]>([]);
+
+    useEffect(() => {
+        setTransactions(arrTransactions)
+    }, []);
+
+    const filteredTransactions = transactionType.length > 0 ? transactions.filter(transaction => transaction.type.includes(transactionType)) : [];
 
     return (
         <div>
             <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl flex justify-between items-center gap-4">
                 <FormControl>
-                    <Input
-                        type="text"
+                    <Select
+                        placeholder="Select type"
                         backgroundColor={"white"}
-                        placeholder={"Buscar"}
-                    />
-                </FormControl>
-                <FormControl>
-                    <Select placeholder="Select type" backgroundColor={"white"}>
+                        onChange={e => setTtransactionType(e.target.value)}
+                        value={transactionType}
+                    >
                         <option>cash-in</option>
                         <option>cash-out</option>
                     </Select>
                 </FormControl>
-                <SingleDatepicker
-                    propsConfigs={{
-                        dateNavBtnProps: {
-                            colorScheme: "black",
-                            variant: "solid",
-                        },
-                        dayOfMonthBtnProps: {
-                            defaultBtnProps: {
-                                borderColor: "#212529",
-                                _hover: {
-                                    background: "#E9ECEF",
-                                    color: "#212529",
-                                },
-                            },
-                            isInRangeBtnProps: {
-                                color: "green",
-                            },
-                            selectedBtnProps: {
-                                background: "#E9ECEF",
-                                color: "#212529",
-                            },
-                            todayBtnProps: {
-                                background: "#212529",
-                            },
-                        },
-                        inputProps: {
-                            size: "sm",
-                        },
-                        popoverCompProps: {
-                            popoverContentProps: {
-                                background: "#212529",
-                                color: "#F8F9FA",
-                            },
-                        },
-                    }}
-                    name="date-input"
-                    date={date}
-                    onDateChange={setDate}
-                />
+                <input className="p-2 h-10 rounded-md" type="date" />
+                <input className="p-2 h-10 rounded-md" type="date" />
             </div>
             <div className="bg-black-900 pl-1 pr-1 pb-1">
                 <TableContainer className="bg-white">
                     <Table variant="striped" colorScheme="gray">
-                        <Thead>
-                            <Tr>
-                                <Th>To convert</Th>
-                                <Th>into</Th>
-                                <Th isNumeric>multiply by</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td isNumeric>25.4</Td>
-                            </Tr>
-                            <Tr>
-                                <Td>feet</Td>
-                                <Td>centimetres (cm)</Td>
-                                <Td isNumeric>30.48</Td>
-                            </Tr>
-                            <Tr>
-                                <Td>yards</Td>
-                                <Td>metres (m)</Td>
-                                <Td isNumeric>0.91444</Td>
-                            </Tr>
-                        </Tbody>
+                        {transactionType.length > 0 ? (
+                            <Tbody>
+                                {filteredTransactions.map(transaction =>
+                                    <Transaction key={transaction.id} id={transaction.id} user={transaction.user} type={transaction.type} value={transaction.value} createdAt={transaction.createdAt} />
+                                )}
+                            </Tbody>
+                        ) : (
+                            <Tbody>
+                                {transactions.map(transaction =>
+                                    <Transaction key={transaction.id} id={transaction.id} user={transaction.user} type={transaction.type} value={transaction.value} createdAt={transaction.createdAt} />
+                                )}
+                            </Tbody>
+                        )}
                     </Table>
                 </TableContainer>
             </div>

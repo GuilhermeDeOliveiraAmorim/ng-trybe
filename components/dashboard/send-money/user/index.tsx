@@ -1,5 +1,5 @@
 import { Button, FormControl, Input, Td, Tr } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 interface IUser {
     picture: string;
@@ -8,8 +8,15 @@ interface IUser {
 }
 
 function User(props: IUser) {
-
     const { id, name, picture } = props;
+
+    const [money, setMoney] = useState();
+
+    function sendMoney(e: any) {
+        console.log(e);
+        setMoney(e);
+        console.log(id, name, money);
+    }
 
     return (
         <Tr key={id}>
@@ -19,17 +26,17 @@ function User(props: IUser) {
             <Td>{name}</Td>
             <Td>
                 <FormControl>
-                    <Input placeholder="Valor" backgroundColor={"white"} type='number' />
+                    <Input id={id} placeholder="Valor" backgroundColor={"white"} type='number' />
                 </FormControl>
             </Td>
             <Td>
                 <Button
                     id={id}
-                    loadingText='Enviar'
                     colorScheme='teal'
                     variant='outline'
+                    onClick={() => sendMoney(document.getElementsByName(id)[0])}
                 >
-                    Enviar
+                    cash-in
                 </Button>
             </Td>
         </Tr>
