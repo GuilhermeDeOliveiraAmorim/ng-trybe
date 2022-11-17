@@ -11,20 +11,21 @@ export default function Home() {
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		try {
-			const response = await api.post("/login", {
-				login: login,
-				password: password,
-			});
-			if (response.data.status === "Error") {
-				console.log("Error");
-			} else {
-				console.log(response);
-				router.push(`/dashboard`);
-			}
-		} catch (error) {
-			console.log(error);
-		}
+		router.push(`/dashboard`);
+		// try {
+		// 	const response = await api.post("/login", {
+		// 		login: login,
+		// 		password: password,
+		// 	});
+		// 	if (response.data.status === "Error") {
+		// 		console.log("Error");
+		// 	} else {
+		// 		console.log(response);
+		// 		router.push(`/dashboard`);
+		// 	}
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	}
 	return (
 		<div>

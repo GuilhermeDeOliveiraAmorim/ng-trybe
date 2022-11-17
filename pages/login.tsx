@@ -14,29 +14,30 @@ export default function Login() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    try {
-      const response = await api.post("/login", {
-        login: login,
-        password: password,
-      });
-      if (response.data.status === "Error") {
+    router.push(`/dashboard`);
+    // try {
+    //   const response = await api.post("/login", {
+    //     login: login,
+    //     password: password,
+    //   });
+    //   if (response.data.status === "Error") {
 
-        console.log("Error");
-      } else {
-        console.log(response);
-        router.push(`/dashboard`);
-      }
-    } catch (error) {
-      toast({
-        title: 'Erro nas credenciais.',
-        description: "Login ou senha inválidos.",
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-        position: "bottom-right"
-      })
-      console.log(error);
-    }
+    //     console.log("Error");
+    //   } else {
+    //     console.log(response);
+    //     router.push(`/dashboard`);
+    //   }
+    // } catch (error) {
+    //   toast({
+    //     title: 'Erro nas credenciais.',
+    //     description: "Login ou senha inválidos.",
+    //     status: 'error',
+    //     duration: 3000,
+    //     isClosable: true,
+    //     position: "bottom-right"
+    //   })
+    //   console.log(error);
+    // }
   }
 
   return (
