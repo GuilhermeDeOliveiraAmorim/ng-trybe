@@ -25,15 +25,17 @@ export default function Dashboard() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className="flex flex-col sm:flex-row lg:flex-row">
-				<div className="sm:w-1/6 lg:w-1/6 sm:h-screen lg:h-screen bg-purple-900 p-4 flex flex-col justify-between sm:fixed lg:fixed">
+				<div className="sm:w-1/6 lg:w-1/6 sm:h-screen lg:h-screen bg-ng-purple p-4 flex flex-col justify-between sm:fixed lg:fixed">
 					<Perfil me={me} />
 					<Logout />
 				</div>
 				<div className="hidden sm:block lg:block sm:w-1/6 lg:w-1/6"></div>
 				<div className="sm:w-5/6 lg:w-5/6 flex flex-col gap-4 p-4">
-					<Balance balance={balance} />
+					<div className="flex flex-col">
+						<Balance balance={balance} />
+						<History />
+					</div>
 					<SendMoney />
-					<History />
 					<Transactions />
 				</div>
 			</div>

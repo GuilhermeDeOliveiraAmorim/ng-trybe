@@ -35,7 +35,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 h-screen">
-				<div className="bg-purple-900 flex justify-center items-center h-1/2 sm:h-screen lg:h-screen bg-bg-ng bg-no-repeat bg-center bg-cover p-10">
+				<div className="bg-ng-purple flex justify-center items-center h-1/2 sm:h-screen lg:h-screen bg-waves bg-no-repeat bg-center bg-cover p-10">
 					<div>
 						<h1 className="text-white text-[40px] sm:text-[60px] lg:text-[60px] font-black">
 							A CARTEIRA DA NOVA GERAÇÃO.
@@ -45,9 +45,9 @@ export default function Home() {
 						</h2>
 					</div>
 				</div>
-				<div className="bg-white flex justify-center items-center h-1/2 sm:h-screen lg:h-screen">
+				<div className="bg-white flex justify-center items-center h-1/2 sm:h-screen lg:h-screen bg-ng bg-no-repeat bg-center bg-cover">
 					<form
-						className="flex flex-col gap-4 p-4 bg-purple-900 rounded-2xl"
+						className="flex flex-col gap-4 p-4 bg-ng-purple rounded-2xl"
 						onSubmit={handleSubmit}
 					>
 						<input

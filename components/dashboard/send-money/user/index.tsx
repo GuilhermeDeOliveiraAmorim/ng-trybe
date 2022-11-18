@@ -2,9 +2,9 @@ import { Button, FormControl, Input, Td, Tr } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 interface IUser {
-    picture: string;
     id: string;
     name: string;
+    picture: string;
 }
 
 function User(props: IUser) {

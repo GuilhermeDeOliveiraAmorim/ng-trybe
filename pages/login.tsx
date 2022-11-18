@@ -48,7 +48,7 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 h-screen">
-        <div className="bg-purple-900 flex justify-center items-center h-1/2 sm:h-screen lg:h-screen bg-bg-ng bg-no-repeat bg-center bg-cover p-10">
+        <div className="bg-purple-900 flex justify-center items-center h-1/2 sm:h-screen lg:h-screen bg-waves bg-no-repeat bg-center bg-cover p-10">
           <div>
             <h1 className="text-white text-[40px] sm:text-[60px] lg:text-[60px] font-black">
               A CARTEIRA DA NOVA GERAÇÃO.
@@ -58,9 +58,9 @@ export default function Login() {
             </h2>
           </div>
         </div>
-        <div className="bg-white flex justify-center items-center h-1/2 sm:h-screen lg:h-screen">
+        <div className="bg-white flex justify-center items-center h-1/2 sm:h-screen lg:h-screen lg:bg-ng sm:bg-ng lg:bg-no-repeat lg:bg-center lg:bg-cover sm:bg-no-repeat sm:bg-center sm:bg-cover">
           <form
-            className="flex flex-col gap-4 p-4 bg-purple-900 rounded-2xl"
+            className="flex flex-col gap-4 p-4 bg-ng-green rounded-2xl"
             onSubmit={handleSubmit}
           >
             <input

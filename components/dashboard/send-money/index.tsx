@@ -5,6 +5,7 @@ import {
     TableContainer,
 } from "@chakra-ui/react";
 import { User } from "./user";
+import { CardUser } from "./user/card";
 
 interface IUser {
     picture: string;
@@ -42,7 +43,18 @@ function SendMoney() {
                 />
             </div>
             <div className="bg-black-900 pl-1 pr-1 pb-1">
-                <TableContainer className="bg-white">
+                <div className="flex flex-col gap-1 pr-3 pl-3 pb-3">
+                    {search.length > 0 ? (filteredUsers.map(user => {
+                        return (
+                            <CardUser key={user.id} id={user.id} name={user.name} picture={user.picture} />
+                        )
+                    })) : (users.map(user => {
+                        return (
+                            <CardUser key={user.id} id={user.id} name={user.name} picture={user.picture} />
+                        )
+                    }))}
+                </div>
+                {/* <TableContainer className="bg-white">
                     <Table variant="striped" colorScheme="gray">
                         {search.length > 0 ? (
                             <Tbody>
@@ -62,7 +74,7 @@ function SendMoney() {
                             </Tbody>
                         )}
                     </Table>
-                </TableContainer>
+                </TableContainer> */}
             </div>
         </div>
     )

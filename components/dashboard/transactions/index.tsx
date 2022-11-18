@@ -50,7 +50,7 @@ function Transactions() {
         <div>
             <div className="bg-black-900 p-4 rounded-tl-2xl rounded-tr-2xl flex flex-col sm:flex-row lg:flex-row sm:justify-between lg:justify-between items-center gap-4">
                 <Select
-                    placeholder="Tipo de transação"
+                    placeholder="Todas as suas transações"
                     backgroundColor={"white"}
                     onChange={e => setTtransactionType(e.target.value)}
                     value={transactionType}

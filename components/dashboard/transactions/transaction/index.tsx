@@ -1,4 +1,4 @@
-import { Td, Tr } from "@chakra-ui/react";
+import { Badge, Td, Tr } from "@chakra-ui/react";
 import React from "react";
 
 interface IUser {
@@ -25,7 +25,7 @@ function Transaction(props: ITransaction) {
                 <img className="h-20" src={user.picture} alt={user.name} />
             </Td>
             <Td>{user.name}</Td>
-            <Td>{type}</Td>
+            <Td><Badge colorScheme={type === "cash-in" ? 'green' : 'red'} shadow={'base'} rounded={'md'}>{type}</Badge> </Td>
             <Td isNumeric>{value}</Td>
             <Td>{createdAt}</Td>
         </Tr>
